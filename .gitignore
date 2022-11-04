@@ -20,3 +20,5 @@
 ###< symfony/phpunit-bridge ###
 
 /Notes
+.vscode/
+.idea/
