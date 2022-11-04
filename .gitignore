@@ -19,6 +19,7 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-/Notes
+Notes/
 .vscode/
 .idea/
+bin/cache_clear.sh
