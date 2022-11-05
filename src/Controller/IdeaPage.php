@@ -21,8 +21,8 @@ class IdeaPage
      *     )
      */
     public function __invoke(
-        int $id,
-        IdeaPageResponder $responder
+        IdeaPageResponder $responder,
+        ?int $id = null
     ): JsonResponse {
         try {
             return new JsonResponse($responder($id), Response::HTTP_OK);
