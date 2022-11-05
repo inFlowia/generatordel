@@ -6,24 +6,20 @@ namespace App\Tests\Controller\UserIdeas;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
-use App\Tests\Controller\AbstractGetTest;
-use Doctrine\ORM\EntityManager;
+use App\Tests\Controller\AbstractEntityManagerAwareGetTest;
 use Symfony\Component\HttpFoundation\Response;
 
 /** Проверка ЭП: Страница с данными идеи, если пользователя с переданным логином
  * нет */
-class NonExistentLoginTest extends AbstractGetTest
+class NonExistentLoginTest extends AbstractEntityManagerAwareGetTest
 {
     private const LIMIT  = 2;
     private const OFFSET = 1;
 
-    private EntityManager $em;
-
     public function testAction(): void
     {
-        $this->em = self::$container->get('doctrine')->getManager('default');
         /** @var UserRepository */
-        $userRepository = $this->em->getRepository(User::class);
+        $userRepository = self::$em->getRepository(User::class);
 
         $nonExistentLogin = 0;
         while (
