@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Fixtures\IdeaPageTest;
+namespace App\Fixtures\IdeaPage;
 
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;

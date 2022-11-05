@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller;
+namespace App\Tests\Controller\IdeaPage;
 
-use App\Fixtures\IdeaPageTest\IdeaFixture;
-use App\Fixtures\IdeaPageTest\UserFixture;
+use App\Fixtures\IdeaPage\IdeaFixture;
+use App\Fixtures\IdeaPage\UserFixture;
+use App\Tests\Controller\AbstractGetTest;
 
 /** Проверка ЭП: Страница с данными идеи */
-class IdeaPageTest extends AbstractGetTest
+class RegularTest extends AbstractGetTest
 {
     private const REQUESTED_IDEA_ID = IdeaFixture::REQUESTED_IDEA_ID;
     private const EXPECTED = [
