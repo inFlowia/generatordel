@@ -1,7 +1,26 @@
-version: "3.8"
-
 services:
-  php:
+  gendel_db:
+    container_name: gendel_db
+    image: mysql:8.0.39-debian
+    restart: always
+
+    # Чем ниже строчка тем выше приоритет.
+    #
+    # Не делай так:
+    # env_file:
+    #  - .env
+    #  - .env.local
+    # environment:
+    #      MYSQL_ROOT_PASSWORD: ${MYSQL_PWD}
+    # MYSQL_PWD подятнется только из .env а .env.local будет проигнорирован.
+    # То есть если нужно задать переменную окружения, которая должна подятнуться
+    # из файлов указанных в env_file, то указывай эту переменную в env-файлах
+    # сразу с тем именем, которое требуется и не указывай её здесь в environment
+    env_file:
+      - .env
+      - .env.local
+
+  gendel_php:
     container_name: gendel_php
     image: php:8.3.12-zts-bullseye
     # чтобы контейнер не закрывался, временное
@@ -10,13 +29,13 @@ services:
     volumes:
       - .:/usr/src/gendel
 
-  composer:
-    image: composer
+  gendel_composer:
     container_name: gendel_composer
+    image: composer
     working_dir: /usr/src/gendel
     volumes:
       - .:/usr/src/gendel
     # чтобы контейнер не закрывался, временное
     command: tail -f /dev/null
     depends_on:
-      - php
+      - gendel_php
