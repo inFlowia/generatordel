@@ -2,9 +2,10 @@
 
 В директории проекта:
 ```bash
-touch .env.local
+cp .env.test.local.template .env.test.local
 ```
-Скопировать в него все незаданные переменные из .env и задать их.
+Задать в нём все переменные со значением "changeMe".  
+_Именно .env.test.local а не .env.local, потому что bin/console debug:dotenv не видит .env.local ._
 
 Установить докер.
 

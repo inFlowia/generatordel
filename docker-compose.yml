@@ -18,7 +18,7 @@ services:
     # сразу с тем именем, которое требуется и не указывай её здесь в environment
     env_file:
       - .env
-      - .env.local
+      - .env.test.local
 
   gendel_php:
     container_name: gendel_php
