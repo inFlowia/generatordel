@@ -51,3 +51,7 @@ docker ps --format 'table {{.Names}}' --no-trunc -a | grep gendel
 docker rm f4dc18a27c9e_gendel_db
 ```
 
+## Не устанавливается пакет, ругается на уязвимости, но очень хочется
+Временно удали:
+`roave/security-advisories`
+Это вручную установленный не обязательный пакет.
