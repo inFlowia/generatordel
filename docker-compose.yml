@@ -1,9 +1,12 @@
 services:
+  # при переименовании этого сервиса, нужно указать новое имя в DB_HOST_FOR_URL
+  # в .env
   gendel_db:
     container_name: gendel_db
     image: mysql:8.0.39-debian
     restart: always
-
+    ports:
+      - "3306:3306"
     # Чем ниже строчка тем выше приоритет.
     #
     # Не делай так:
@@ -12,22 +15,31 @@ services:
     #  - .env.local
     # environment:
     #      MYSQL_ROOT_PASSWORD: ${MYSQL_PWD}
-    # MYSQL_PWD подятнется только из .env а .env.local будет проигнорирован.
-    # То есть если нужно задать переменную окружения, которая должна подятнуться
+    # MYSQL_PWD подтянется только из .env а .env.local будет проигнорирован.
+    # То есть если нужно задать переменную окружения, которая должна подтянуться
     # из файлов указанных в env_file, то указывай эту переменную в env-файлах
-    # сразу с тем именем, которое требуется и не указывай её здесь в environment
+    # сразу с тем именем, которое требуется и не указывай её здесь в
+    # environment.
     env_file:
       - .env
+      - .env.test
       - .env.test.local
 
   gendel_php:
     container_name: gendel_php
-    image: php:8.3.12-zts-bullseye
-    # чтобы контейнер не закрывался, временное
-    command: tail -f /dev/null
+    build:
+      context: .
     working_dir: /usr/src/gendel
     volumes:
       - .:/usr/src/gendel
+    command: >
+      sh -c " if [ '${APP_ENV}' = 'prod' ]; then
+                cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini;
+              else
+                cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini;
+              fi
+              # чтобы контейнер не закрывался
+              tail -f /dev/null"
 
   gendel_composer:
     container_name: gendel_composer

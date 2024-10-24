@@ -15,4 +15,4 @@ docker exec -it gendel_composer composer install
 ```
 
 ## Примечания
-При внесении любых правок в docker-compose.yaml или изменении, некоторых переменных в любых .env-файлах требуется удаление контейнера, иначе при запуске будет ошибка: "Ошибка при docker-compose up" (см. в Troubleshooting)
+При внесении любых правок в docker-compose.yaml или изменении, некоторых переменных в любых .env-файлах требуется удаление контейнера (`docker-compose rm -svf some_container_name`), иначе при запуске будет ошибка: "Ошибка при docker-compose up" (см. в Troubleshooting)
