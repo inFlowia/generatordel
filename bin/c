@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -it gendel_php bin/console gendel:mini_check
