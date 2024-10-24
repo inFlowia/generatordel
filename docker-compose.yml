@@ -1,8 +1,7 @@
 services:
-  # при переименовании этого сервиса, нужно указать новое имя в DB_HOST_FOR_URL
-  # в .env
   gendel_db:
     container_name: gendel_db
+    hostname: $DB_HOSTNAME
     image: mysql:8.0.39-debian
     restart: always
     # Чем ниже строчка тем выше приоритет.
