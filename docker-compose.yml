@@ -5,8 +5,6 @@ services:
     container_name: gendel_db
     image: mysql:8.0.39-debian
     restart: always
-    ports:
-      - "3306:3306"
     # Чем ниже строчка тем выше приоритет.
     #
     # Не делай так:
