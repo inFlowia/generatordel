@@ -38,8 +38,8 @@ services:
               # чтобы контейнер не закрывался
               tail -f /dev/null"
 
-  gendel_composer:
-    container_name: gendel_composer
+  gendel_service_composer:
+    container_name: gendel_container_composer
     image: composer
     working_dir: /usr/src/gendel
     volumes:
