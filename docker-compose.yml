@@ -38,13 +38,14 @@ services:
               # чтобы контейнер не закрывался
               tail -f /dev/null"
 
+  # если будет задана команда в этом сервисе, нужно проверить
+  # bin/project_setup.sh, так как заданная здесь команда игнорируется перед
+  # docker-compose run
   gendel_service_composer:
     container_name: gendel_container_composer
     image: composer
     working_dir: /usr/src/gendel
     volumes:
       - .:/usr/src/gendel
-    # чтобы контейнер не закрывался, временное
-    command: tail -f /dev/null
     depends_on:
       - gendel_service_php
