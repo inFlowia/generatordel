@@ -1,6 +1,6 @@
 services:
-  gendel_db:
-    container_name: gendel_db
+  gendel_service_db:
+    container_name: gendel_container_db
     hostname: $DB_HOSTNAME
     image: mysql:8.0.39-debian
     restart: always

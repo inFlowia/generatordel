@@ -37,9 +37,9 @@ docker-compose down
 ```
 
 #### Б. Если имя или часть имени проблемного контейнера известна и она не является частью имени другого контейнера
-например это `gendel_db`
+например это gendel_container_db
 ```bash
- docker rm `docker ps --format 'table {{.Names}}' --no-trunc -a | grep gendel_db`
+ docker rm `docker ps --format 'table {{.Names}}' --no-trunc -a | grep gendel_container_db`
 ```
 
 #### В. Если проблемный контейнер неизвестен
@@ -48,7 +48,7 @@ docker ps --format 'table {{.Names}}' --no-trunc -a | grep gendel
 ```
 Найти контейнер у которого вместо имени из container_name имя с буквенно числовым префиксом вида: `f4dc18a27c9e_some_actual_container_name` и удалить его:
 ```bash
-docker rm f4dc18a27c9e_gendel_db
+docker rm f4dc18a27c9e_gendel_container_db
 ```
 
 ## Значение переменной окружения не переопределяется
