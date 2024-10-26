@@ -22,8 +22,8 @@ services:
       - .env.test
       - .env.test.local
 
-  gendel_php:
-    container_name: gendel_php
+  gendel_service_php:
+    container_name: gendel_container_php
     build:
       context: .
     working_dir: /usr/src/gendel
@@ -47,4 +47,4 @@ services:
     # чтобы контейнер не закрывался, временное
     command: tail -f /dev/null
     depends_on:
-      - gendel_php
+      - gendel_service_php
