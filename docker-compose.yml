@@ -23,7 +23,7 @@ services:
       - .env.test.local
 
   gendel_service_php:
-    container_name: gendel_container_php
+    container_name: $PHP_CONTAINER_NAME
     build:
       context: .
     working_dir: /usr/src/gendel
