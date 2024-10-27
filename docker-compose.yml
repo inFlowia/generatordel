@@ -47,5 +47,3 @@ services:
     working_dir: /usr/src/gendel
     volumes:
       - .:/usr/src/gendel
-    depends_on:
-      - gendel_service_php
