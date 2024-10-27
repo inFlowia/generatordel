@@ -4,9 +4,7 @@ DB_READY_CHECKING_TIMEOUT_SEC=60
 DB_READY_CHECKING_INTERVAL_SEC=2
 
 CURRENT_DIR_ABSOLUTE_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source "${CURRENT_DIR_ABSOLUTE_PATH}/../.env"
-source "${CURRENT_DIR_ABSOLUTE_PATH}/../.env.test"
-source "${CURRENT_DIR_ABSOLUTE_PATH}/../.env.test.local"
+source "${CURRENT_DIR_ABSOLUTE_PATH}/lib/import_test_env.sh"
 
 drawSeparator()
 {
