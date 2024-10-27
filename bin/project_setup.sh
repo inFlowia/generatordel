@@ -24,13 +24,13 @@ waitForDbReady()
     # Эта проверка иногда отвечает успехом раньше готовности к подключению
     # doctrine:
     #    docker exec "$DB_CONTAINER_NAME" mysqladmin ping\
-    #     --user="$DB_USER"\
-    #     --password="$MYSQL_ROOT_PASSWORD"\
+    #     --user="$MYSQL_USER"\
+    #     --password="$MYSQL_PASSWORD"\
     #     --silent
     # Проверка при помощи запроса надёжнее
     docker exec "$DB_CONTAINER_NAME" mysql\
-      --user="$DB_USER"\
-      --password="$MYSQL_ROOT_PASSWORD"\
+      --user="$MYSQL_USER"\
+      --password="$MYSQL_PASSWORD"\
       --execute="SELECT 'Some response from DB';"\
       --silent
 
