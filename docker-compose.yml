@@ -39,7 +39,7 @@ services:
               tail -f /dev/null"
 
   # если будет задана команда в этом сервисе, нужно проверить
-  # bin/project_setup.sh, так как заданная здесь команда игнорируется перед
+  # bin/setup_project.sh, так как заданная здесь команда игнорируется перед
   # docker-compose run
   gendel_service_composer:
     container_name: gendel_container_composer
