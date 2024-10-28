@@ -9,7 +9,7 @@ use App\Tests\Controller\AbstractEntityManagerAwareGetTest;
 use Symfony\Component\HttpFoundation\Response;
 
 // Проверка ЭП: Страница с данными идеи, при передаче id несуществующей идеи
-class NonExistentLoginTest extends AbstractEntityManagerAwareGetTest
+class NonExistentIdTest extends AbstractEntityManagerAwareGetTest
 {
     public function testAction(): void
     {
