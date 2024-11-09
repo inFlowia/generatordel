@@ -19,7 +19,7 @@ drawSeparator
 waitForDbReady
 drawSeparator
 echo 'Starting project setup success checking script...'
-bin/c
+bin/mini-check_project.sh
 drawSeparator
 
 echo 'Starting fixtures re-creation script...'
