@@ -27,6 +27,8 @@ services:
     build:
       context: .
     working_dir: /usr/src/gendel
+    depends_on:
+      - gendel_service_db
     volumes:
       - .:/usr/src/gendel
     command: >
