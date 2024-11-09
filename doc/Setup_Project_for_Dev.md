@@ -11,7 +11,7 @@
 4. Установить докер.
 5. 
     ```bash
-    bin/setup_project.sh
+    bin/setup_project_for_dev.sh
     ```
 
 Если в результате выполнения последней команды вы видите зелёный список фикстур, а так же перед этим в выводе имеется зелёное сообщение: "[OK] Minimal check of application functionality has been success!", значит проект готов к работе.
