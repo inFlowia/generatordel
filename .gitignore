@@ -23,3 +23,6 @@ Notes/
 .vscode/
 .idea/
 bin/cache_clear.sh
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
