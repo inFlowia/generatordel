@@ -4,6 +4,7 @@ services:
     hostname: $DB_HOSTNAME
     image: mysql:8.0.39-debian
     restart: always
+
     # Чем ниже строчка тем выше приоритет.
     #
     # Не делай так:
@@ -22,11 +23,18 @@ services:
       - .env.test
       - .env.test.local
 
+    volumes:
+      - gendel_db_data_volume:/var/lib/mysql
+
   gendel_service_php:
     container_name: $PHP_CONTAINER_NAME
     build:
       context: .
+
+    # При смене пути не забудь поправить все скрипты из bin, запускающие
+    # другие скрипты из bin внутри этого сервиса
     working_dir: /usr/src/gendel
+
     depends_on:
       - gendel_service_db
     volumes:
@@ -49,3 +57,6 @@ services:
     working_dir: /usr/src/gendel
     volumes:
       - .:/usr/src/gendel
+
+volumes:
+  gendel_db_data_volume:

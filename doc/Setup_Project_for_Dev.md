@@ -14,7 +14,9 @@
     bin/setup_project.sh
     ```
 
-Если в результате выполнения последней команды вы видите зелёное сообщение: "[OK] Minimal check of application functionality has been success!", значит проект готов к работе.
+Если в результате выполнения последней команды вы видите зелёный список фикстур, а так же перед этим в выводе имеется зелёное сообщение: "[OK] Minimal check of application functionality has been success!", значит проект готов к работе.
+
+Красное сообщение: "[CAUTION] This operation should not be executed in a production environment!" не свидетельствует об ошибке настройки.
 
 ## Примечания
 При внесении любых правок в docker-compose.yaml или изменении, некоторых переменных в любых .env-файлах требуется удаление контейнера (`docker-compose rm -svf some_container_name`), иначе при запуске будет ошибка: "Ошибка при docker-compose up" (см. [Troubleshooting](Troubleshooting.md))
