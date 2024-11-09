@@ -2,11 +2,8 @@
 
 CURRENT_DIR_ABSOLUTE_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "${CURRENT_DIR_ABSOLUTE_PATH}/lib/wait_for_db_ready.sh"
+source "${CURRENT_DIR_ABSOLUTE_PATH}/lib/cli_decor.sh"
 
-drawSeparator()
-{
-  echo '============================================================'
-}
 
 docker-compose up -d
 drawSeparator
