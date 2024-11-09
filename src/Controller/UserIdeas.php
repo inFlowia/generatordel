@@ -14,13 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /** ЭП: компонент с идеями пользователя */
 class UserIdeas
 {
-    /**
-     * @Route("/user-ideas/{login}",
-     *     name="user_ideas",
-     *     methods={"GET"},
-     *     options = { "expose" = true }
-     *     )
-     */
+    #[Route(path: '/user-ideas/{login}', name: 'user_ideas', methods: ['GET'], options: ['expose' => true])]
     public function __invoke(
         Request $request,
         UserIdeasResponder $responder,

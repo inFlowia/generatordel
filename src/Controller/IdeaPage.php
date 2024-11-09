@@ -13,13 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /** ЭП: Страница с данными идеи */
 class IdeaPage
 {
-    /**
-     * @Route("/idea/{id}",
-     *     name="idea_page",
-     *     methods={"GET"},
-     *     options = { "expose" = true }
-     *     )
-     */
+    #[Route(path: '/idea/{id}', name: 'idea_page', methods: ['GET'], options: ['expose' => true])]
     public function __invoke(
         IdeaPageResponder $responder,
         ?int $id = null

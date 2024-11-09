@@ -9,28 +9,21 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- */
+#[ORM\Entity(repositoryClass: \App\Repository\UserRepository::class)]
 class User
 {
     use IdTrait;
 
-    /**
-     * @ORM\Column(type="string", length=25, nullable=false, unique=true)
-     */
+    #[ORM\Column(type: 'string', length: 25, nullable: false, unique: true)]
     private string $login;
 
-    /**
-     * @ORM\Column(type="string", nullable=false)
-     */
+    #[ORM\Column(type: 'string', nullable: false)]
     private string $passwordHash;
 
     /**
      * @var Collection<Ideas> $ideas
-     *
-     * @ORM\OneToMany(targetEntity="App\Entity\Idea", mappedBy="user")
      */
+    #[ORM\OneToMany(targetEntity: \App\Entity\Idea::class, mappedBy: 'user')]
     private Collection $ideas;
 
     public function __construct()

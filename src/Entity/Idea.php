@@ -9,24 +9,20 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Идея - чем заняться
- *
- * @ORM\Entity(repositoryClass="App\Repository\IdeaRepository")
  */
+#[ORM\Entity(repositoryClass: \App\Repository\IdeaRepository::class)]
 class Idea
 {
     use IdTrait;
 
-    /**
-     * @ORM\Column(type="text", nullable=false)
-     */
+    #[ORM\Column(type: 'text', nullable: false)]
     private string $content;
 
     /**
      * @var User $author
-     *
-     * @ORM\ManyToOne(targetEntity="App\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
      */
+    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\User::class)]
     private User $author;
 
     /**

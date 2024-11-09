@@ -14,11 +14,10 @@ trait IdTrait
      *                   доступа до инициализации при методах типа add.
      *                   Значение по умолчанию null а не 0 во избежание ошибки
      *                   при добавлении через SonataAdmin.
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
      */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     protected ?int $id = null;
 
     /**
