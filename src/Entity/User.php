@@ -4,17 +4,27 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Entity\Traits\IdTrait;
+use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: \App\Repository\UserRepository::class)]
+#[ORM\Entity(repositoryClass: UserRepository::class)]
 class User
 {
-    use IdTrait;
+    /**
+     * Обнуляемо, для возможности ORM удалять экземпляры.
+     * Задано значение по умолчанию для избежания ошибки доступа до
+     * инициализации при методах типа add.
+     * Значение по умолчанию null а не 0 во избежание ошибки при добавлении
+     * через SonataAdmin.
+     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    protected ?int $id = null;
 
-    #[ORM\Column(type: 'string', length: 25, nullable: false, unique: true)]
+    #[ORM\Column(type: 'string', length: 25, unique: true, nullable: false)]
     private string $login;
 
     #[ORM\Column(type: 'string', nullable: false)]
@@ -23,7 +33,7 @@ class User
     /**
      * @var Collection<Idea> $ideas
      */
-    #[ORM\OneToMany(targetEntity: \App\Entity\Idea::class, mappedBy: 'author')]
+    #[ORM\OneToMany(mappedBy: 'author', targetEntity: Idea::class)]
     private Collection $ideas;
 
     public function __construct()
@@ -31,19 +41,23 @@ class User
         $this->ideas = new ArrayCollection();
     }
 
-    /**
-     * @return string
-     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(?int $id): User
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getLogin(): string
     {
         return $this->login;
     }
 
-    /**
-     * @param string $login
-     *
-     * @return User
-     */
     public function setLogin(string $login): User
     {
         $this->login = $login;
@@ -51,19 +65,11 @@ class User
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getPasswordHash(): string
     {
         return $this->passwordHash;
     }
 
-    /**
-     * @param string $passwordHash
-     *
-     * @return User
-     */
     public function setPasswordHash(string $passwordHash): User
     {
         $this->passwordHash = $passwordHash;
@@ -71,14 +77,21 @@ class User
         return $this;
     }
 
-    /**
-     * @param string $password
-     *
-     * @return User
-     */
     public function setPasswordHashByPassword(string $password): User
     {
         $this->passwordHash = \password_hash($password, PASSWORD_DEFAULT);
+
+        return $this;
+    }
+
+    public function getIdeas(): Collection
+    {
+        return $this->ideas;
+    }
+
+    public function setIdeas(Collection $ideas): User
+    {
+        $this->ideas = $ideas;
 
         return $this;
     }

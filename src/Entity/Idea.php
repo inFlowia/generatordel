@@ -4,40 +4,51 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Entity\Traits\IdTrait;
+use App\Repository\IdeaRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Идея - чем заняться
  */
-#[ORM\Entity(repositoryClass: \App\Repository\IdeaRepository::class)]
+#[ORM\Entity(repositoryClass: IdeaRepository::class)]
 class Idea
 {
-    use IdTrait;
+    /**
+     * Обнуляемо, для возможности ORM удалять экземпляры.
+     * Задано значение по умолчанию для избежания ошибки доступа до
+     * инициализации при методах типа add.
+     * Значение по умолчанию null а не 0 во избежание ошибки при добавлении
+     * через SonataAdmin.
+     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    protected ?int $id = null;
 
     #[ORM\Column(type: 'text', nullable: false)]
     private string $content;
 
-    /**
-     * @var User $author
-     */
     #[ORM\JoinColumn(nullable: false)]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\User::class, inversedBy: 'ideas')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'ideas')]
     private User $author;
 
-    /**
-     * @return string
-     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function setId(?int $id): Idea
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getContent(): string
     {
         return $this->content;
     }
 
-    /**
-     * @param string $content
-     *
-     * @return Idea
-     */
     public function setContent(string $content): Idea
     {
         $this->content = $content;
@@ -45,19 +56,11 @@ class Idea
         return $this;
     }
 
-    /**
-     * @return User
-     */
     public function getAuthor(): User
     {
         return $this->author;
     }
 
-    /**
-     * @param User $author
-     *
-     * @return Idea
-     */
     public function setAuthor(User $author): Idea
     {
         $this->author = $author;
