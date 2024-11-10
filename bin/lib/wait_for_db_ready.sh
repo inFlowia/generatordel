@@ -1,14 +1,15 @@
 #!/bin/bash
 
-CURRENT_DIR_ABSOLUTE_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-source "${CURRENT_DIR_ABSOLUTE_PATH}/import_test_env.sh"
-
-DB_READY_CHECKING_TIMEOUT_SEC=60
-DB_READY_CHECKING_INTERVAL_SEC=2
-
 waitForDbReady()
 {
-  elapsedTime=0
+  local CURRENT_DIR_ABSOLUTE_PATH
+  CURRENT_DIR_ABSOLUTE_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+  source "${CURRENT_DIR_ABSOLUTE_PATH}/import_test_env.sh"
+
+  local DB_READY_CHECKING_TIMEOUT_SEC=60
+  local DB_READY_CHECKING_INTERVAL_SEC=2
+
+  local elapsedTime=0
 
   while [[ $elapsedTime -lt $DB_READY_CHECKING_TIMEOUT_SEC ]]
   do
@@ -27,7 +28,7 @@ waitForDbReady()
       --execute="SELECT 'Some response from DB';"\
       --silent
 
-    exitCode=$?
+    local exitCode=$?
 
     if [[ $exitCode -eq 0 ]]
     then
@@ -37,7 +38,7 @@ waitForDbReady()
     fi
 
     sleep $DB_READY_CHECKING_INTERVAL_SEC
-    elapsedTime=$((elapsedTime + DB_READY_CHECKING_INTERVAL_SEC))
+    local elapsedTime=$((elapsedTime + DB_READY_CHECKING_INTERVAL_SEC))
   done
 
     echo "Error: MySQL did not become ready within ${DB_READY_CHECKING_TIMEOUT_SEC} seconds."
