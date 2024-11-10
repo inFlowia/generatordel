@@ -14,11 +14,15 @@ use Symfony\Component\Routing\Attribute\Route;
 /** ЭП: компонент с идеями пользователя */
 class UserIdeas
 {
-    #[Route(path: '/user-ideas/{login}', name: 'user_ideas', methods: ['GET'], options: ['expose' => true])]
+    #[Route(
+        path: '/user-ideas/{login}',
+        name: 'user_ideas',
+        methods: ['GET']
+    )]
     public function __invoke(
-        Request $request,
+        Request            $request,
         UserIdeasResponder $responder,
-        ?string $login = null,
+        ?string            $login = null,
     ): JsonResponse {
         try {
             return new JsonResponse(
