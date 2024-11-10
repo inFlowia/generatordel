@@ -23,7 +23,7 @@ class User
     /**
      * @var Collection<Ideas> $ideas
      */
-    #[ORM\OneToMany(targetEntity: \App\Entity\Idea::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: \App\Entity\Idea::class, mappedBy: 'author')]
     private Collection $ideas;
 
     public function __construct()

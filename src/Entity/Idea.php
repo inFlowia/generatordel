@@ -22,7 +22,7 @@ class Idea
      * @var User $author
      */
     #[ORM\JoinColumn(nullable: false)]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\User::class)]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\User::class, inversedBy: 'ideas')]
     private User $author;
 
     /**
