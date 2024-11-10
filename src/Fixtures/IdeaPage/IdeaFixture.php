@@ -12,10 +12,10 @@ use Doctrine\Persistence\ObjectManager;
 
 class IdeaFixture extends Fixture implements DependentFixtureInterface
 {
-    public const REQUESTED_IDEA_ID      = 2;
-    public const REQUESTED_IDEA_CONTENT = 'Залезть на дерево.';
+    public const int REQUESTED_IDEA_ID = 2;
+    public const string REQUESTED_IDEA_CONTENT = 'Залезть на дерево.';
 
-    private const ENTITY_DATA = [
+    private const array ENTITY_DATA = [
         1 => [
             'content'  => 'Узнать, что такое Предел Хейфлика.',
             'authorId' => UserFixture::FIRST_USER_ID,

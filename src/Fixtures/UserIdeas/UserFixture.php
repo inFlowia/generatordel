@@ -10,12 +10,12 @@ use Doctrine\Persistence\ObjectManager;
 
 class UserFixture extends Fixture
 {
-    public const REQUESTED_USER_ID     = 2;
-    public const NOT_REQUESTED_USER_ID = 3;
+    public const int REQUESTED_USER_ID     = 2;
+    public const int NOT_REQUESTED_USER_ID = 3;
 
-    public const REQUESTED_USER_LOGIN = 'Konata';
+    public const string REQUESTED_USER_LOGIN = 'Konata';
 
-    private const ENTITY_DATA = [
+    private const array ENTITY_DATA = [
         self::REQUESTED_USER_ID => [
             'login'    => self::REQUESTED_USER_LOGIN,
             'password' => '473581134q>{X',

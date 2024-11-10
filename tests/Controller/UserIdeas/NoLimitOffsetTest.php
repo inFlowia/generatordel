@@ -11,9 +11,9 @@ use App\Tests\Controller\AbstractGetTest;
 /** Проверка ЭП: Страница с данными идеи, с непереданными limit и offset*/
 class NoLimitOffsetTest extends AbstractGetTest
 {
-    private const REQUESTED_USER_LOGIN = UserFixture::REQUESTED_USER_LOGIN;
+    private const string REQUESTED_USER_LOGIN = UserFixture::REQUESTED_USER_LOGIN;
 
-    private const EXPECTED = [
+    private const array EXPECTED = [
         0 => [
             'id'      => IdeaFixture::ID_OF_IDEA_4_OF_REQUESTED_USER,
             'content' => IdeaFixture::CONTENT_OF_IDEA_3_OF_REQUESTED_USER,

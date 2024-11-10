@@ -11,8 +11,8 @@ use App\Tests\Controller\AbstractGetTest;
 /** Проверка ЭП: Страница с данными идеи */
 class RegularTest extends AbstractGetTest
 {
-    private const REQUESTED_IDEA_ID = IdeaFixture::REQUESTED_IDEA_ID;
-    private const EXPECTED = [
+    private const int REQUESTED_IDEA_ID = IdeaFixture::REQUESTED_IDEA_ID;
+    private const array EXPECTED = [
         'content' => IdeaFixture::REQUESTED_IDEA_CONTENT,
         'author'  => UserFixture::FIRST_USER_LOGIN,
     ];

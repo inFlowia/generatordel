@@ -11,7 +11,7 @@ use App\Repository\IdeaRepository;
 /** ЭП: компонент с идеями пользователя */
 class UserIdeasResponder
 {
-    private const DEFAULT_LIMIT = 8;
+    private const int DEFAULT_LIMIT = 8;
 
     private IdeaRepository $repository;
 

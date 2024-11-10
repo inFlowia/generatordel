@@ -13,8 +13,8 @@ use Symfony\Component\HttpFoundation\Response;
  * нет */
 class NonExistentLoginTest extends AbstractEntityManagerAwareGetTest
 {
-    private const LIMIT  = 2;
-    private const OFFSET = 1;
+    private const int LIMIT  = 2;
+    private const int OFFSET = 1;
 
     public function testAction(): void
     {

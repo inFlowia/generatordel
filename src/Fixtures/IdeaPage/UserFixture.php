@@ -10,8 +10,8 @@ use Doctrine\Persistence\ObjectManager;
 
 class UserFixture extends Fixture
 {
-    public const FIRST_USER_ID    = 1;
-    public const FIRST_USER_LOGIN = 'Sandy Suok';
+    public const int FIRST_USER_ID = 1;
+    public const string FIRST_USER_LOGIN = 'Sandy Suok';
 
     /** @inheritDoc */
     public function load(ObjectManager $manager): void

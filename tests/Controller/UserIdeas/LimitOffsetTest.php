@@ -11,11 +11,11 @@ use App\Tests\Controller\AbstractGetTest;
 /** Проверка обработки limit и offset в ЭП: Страница с данными идеи */
 class LimitOffsetTest extends AbstractGetTest
 {
-    private const REQUESTED_USER_LOGIN = UserFixture::REQUESTED_USER_LOGIN;
-    private const LIMIT  = 2;
-    private const OFFSET = 1;
+    private const string REQUESTED_USER_LOGIN = UserFixture::REQUESTED_USER_LOGIN;
+    private const int LIMIT  = 2;
+    private const int OFFSET = 1;
 
-    private const EXPECTED = [
+    private const array EXPECTED = [
         0 => [
             'id'      => IdeaFixture::ID_OF_IDEA_3_OF_REQUESTED_USER,
             'content' => IdeaFixture::CONTENT_OF_IDEA_3_OF_REQUESTED_USER,

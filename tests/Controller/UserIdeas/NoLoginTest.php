@@ -10,8 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 /** Проверка ЭП: Страница с данными идеи, если логин не передан */
 class NoLoginTest extends AbstractGetTest
 {
-    private const LIMIT  = 2;
-    private const OFFSET = 1;
+    private const int LIMIT  = 2;
+    private const int OFFSET = 1;
 
     public function testAction(): void
     {
