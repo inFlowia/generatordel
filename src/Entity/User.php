@@ -21,7 +21,7 @@ class User
     private string $passwordHash;
 
     /**
-     * @var Collection<Ideas> $ideas
+     * @var Collection<Idea> $ideas
      */
     #[ORM\OneToMany(targetEntity: \App\Entity\Idea::class, mappedBy: 'author')]
     private Collection $ideas;
