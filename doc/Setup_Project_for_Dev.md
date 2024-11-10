@@ -14,7 +14,7 @@
     bin/setup_project_for_dev.sh
     ```
 
-Если в результате выполнения последней команды вы видите зелёный список фикстур, а так же перед этим в выводе имеется зелёное сообщение: "[OK] Minimal check of application functionality has been success!", значит проект готов к работе.
+Если в результате выполнения последней команды вы видите зелёный список фикстур, значит проект готов к работе.
 
 Красное сообщение: "[CAUTION] This operation should not be executed in a production environment!" не свидетельствует об ошибке настройки.
 

@@ -15,8 +15,15 @@ drawSeparator
 
 waitForDbReady
 drawSeparator
-echo 'Starting project setup success checking script...'
+currentCheckName='Project setup success checking script'
+echo "Starting ${currentCheckName}..."
 bin/mini-check_project.sh
+currentExitCode=$?
+if [[ $currentExitCode -ne 0 ]]
+then
+  showError "${currentCheckName} finished with error!"
+  exit 1
+fi
 drawSeparator
 
 echo 'Starting fixtures re-creation script...'
