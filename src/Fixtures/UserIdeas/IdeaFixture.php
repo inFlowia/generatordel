@@ -40,7 +40,7 @@ class IdeaFixture extends Fixture implements DependentFixtureInterface
             'authorId' => UserFixture::REQUESTED_USER_ID,
         ],
         self::ID_OF_IDEA_4_OF_REQUESTED_USER => [
-            'content'  => self::CONTENT_OF_IDEA_3_OF_REQUESTED_USER,
+            'content'  => self::CONTENT_OF_IDEA_4_OF_REQUESTED_USER,
             'authorId' => UserFixture::REQUESTED_USER_ID,
         ],
         8 => [
