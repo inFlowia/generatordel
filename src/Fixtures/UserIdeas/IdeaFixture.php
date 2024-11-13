@@ -18,15 +18,15 @@ class IdeaFixture extends Fixture implements DependentFixtureInterface
     public const int ID_OF_IDEA_4_OF_REQUESTED_USER = 7;
 
     public const string CONTENT_OF_IDEA_1_OF_REQUESTED_USER =
-        'Прочитать тот самый томик, который подарили много лет назад.';
+        'Прочитать ту самую книгу, что подарили на ДР';
     public const string CONTENT_OF_IDEA_2_OF_REQUESTED_USER =
-        'Позвать друзей на чай со вкусняшками.';
+        'Собрать друзей на настолки';
     public const string CONTENT_OF_IDEA_3_OF_REQUESTED_USER =
-        'Слоняться по книжному пока не выгонят.';
+        'Вспомнить у кого ближайший день рождения и подобрать подарок';
     public const string CONTENT_OF_IDEA_4_OF_REQUESTED_USER =
         'Починить наушники, которые жалко было выкинуть. Или выкинуть.';
 
-    private const array ENTITY_DATA = [
+    private const array ID_TO_DATA_MAP = [
         self::ID_OF_IDEA_1_OF_REQUESTED_USER => [
             'content'  => self::CONTENT_OF_IDEA_1_OF_REQUESTED_USER,
             'authorId' => UserFixture::REQUESTED_USER_ID,
@@ -44,7 +44,7 @@ class IdeaFixture extends Fixture implements DependentFixtureInterface
             'authorId' => UserFixture::REQUESTED_USER_ID,
         ],
         8 => [
-            'content'  => 'Походить по улицам, покормить котов',
+            'content'  => 'Погулять, покормить бездомных котов',
             'authorId' => UserFixture::NOT_REQUESTED_USER_ID,
         ],
     ];
@@ -52,7 +52,7 @@ class IdeaFixture extends Fixture implements DependentFixtureInterface
     /** @inheritDoc */
     public function load(ObjectManager $manager): void
     {
-        foreach (self::ENTITY_DATA as $id => $entityData) {
+        foreach (self::ID_TO_DATA_MAP as $id => $entityData) {
             $entity = (new Idea())
                 ->setId($id)
                 ->setContent($entityData['content'])

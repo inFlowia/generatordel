@@ -15,13 +15,13 @@ class UserFixture extends Fixture
 
     public const string REQUESTED_USER_LOGIN = 'Konata';
 
-    private const array ENTITY_DATA = [
+    private const array ID_TO_DATA_MAP = [
         self::REQUESTED_USER_ID => [
             'login'    => self::REQUESTED_USER_LOGIN,
             'password' => '473581134q>{X',
         ],
         3 => [
-            'login'    => 'Квадратик',
+            'login'    => 'Пётр',
             'password' => '[_]/#f4%d',
         ],
         4 => [
@@ -37,7 +37,7 @@ class UserFixture extends Fixture
     /** @inheritDoc */
     public function load(ObjectManager $manager): void
     {
-        foreach (self::ENTITY_DATA as $id => $entityData) {
+        foreach (self::ID_TO_DATA_MAP as $id => $entityData) {
             $entity = (new User())
                 ->setId($id)
                 ->setLogin($entityData['login'])
