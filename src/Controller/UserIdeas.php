@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Message;
-use App\Responder\UserIdeasResponder;
+use App\ResponseDataCreator\UserIdeasCreator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,18 +15,18 @@ use Symfony\Component\Routing\Attribute\Route;
 class UserIdeas
 {
     #[Route(
-        path: '/user-ideas/{login}',
-        name: 'user_ideas',
+        path   : '/user-ideas/{login}',
+        name   : 'user_ideas',
         methods: ['GET']
     )]
     public function __invoke(
-        Request            $request,
-        UserIdeasResponder $responder,
-        ?string            $login = null,
+        Request          $request,
+        UserIdeasCreator $responseDataCreator,
+        ?string          $login = null,
     ): JsonResponse {
         try {
             return new JsonResponse(
-                $responder(
+                $responseDataCreator(
                     $login,
                     $request->query->getInt('limit'),
                     $request->query->getInt('offset'),

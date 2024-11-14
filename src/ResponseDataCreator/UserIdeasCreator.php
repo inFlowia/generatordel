@@ -2,33 +2,21 @@
 
 declare(strict_types=1);
 
-namespace App\Responder;
+namespace App\ResponseDataCreator;
 
 use App\Exception\UserIdeasException;
 use App\Message;
 use App\Repository\IdeaRepository;
 
 /** ЭП: компонент с идеями пользователя */
-class UserIdeasResponder
+readonly class UserIdeasCreator
 {
     private const int DEFAULT_LIMIT = 8;
 
-    private IdeaRepository $repository;
+    public function __construct(private IdeaRepository $repository) {}
 
     /**
-     * @param IdeaRepository $repository
-     */
-    public function __construct(IdeaRepository $repository)
-    {
-        $this->repository = $repository;
-    }
-
-    /**
-     * @param string   $login
-     * @param int      $limit
-     * @param int|null $offset
-     *
-     * @return array
+     * @throws UserIdeasException
      */
     public function __invoke(
         string $login,

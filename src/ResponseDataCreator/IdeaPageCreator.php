@@ -2,29 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Responder;
+namespace App\ResponseDataCreator;
 
 use App\Entity\Idea;
 use App\Repository\IdeaRepository;
 
 /** ЭП: Страница с данными идеи */
-class IdeaPageResponder
+readonly class IdeaPageCreator
 {
-    private IdeaRepository $repository;
+    public function __construct(private IdeaRepository $repository) {}
 
-    /**
-     * @param IdeaRepository $repository
-     */
-    public function __construct(IdeaRepository $repository)
-    {
-        $this->repository = $repository;
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return array
-     */
     public function __invoke(int $id): array
     {
         /** @var Idea $idea */
