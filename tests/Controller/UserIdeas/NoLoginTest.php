@@ -7,10 +7,10 @@ namespace App\Tests\Controller\UserIdeas;
 use App\Tests\Controller\AbstractGetTest;
 use Symfony\Component\HttpFoundation\Response;
 
-/** Проверка ЭП: Страница с данными идеи, если логин не передан */
+/** Проверка ЭП: "Компонент с идеями пользователя", если логин не передан */
 class NoLoginTest extends AbstractGetTest
 {
-    private const int LIMIT  = 2;
+    private const int LIMIT = 2;
     private const int OFFSET = 1;
 
     public function testAction(): void

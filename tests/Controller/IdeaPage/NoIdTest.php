@@ -7,7 +7,7 @@ namespace App\Tests\Controller\IdeaPage;
 use App\Tests\Controller\AbstractGetTest;
 use Symfony\Component\HttpFoundation\Response;
 
-/** Проверка ЭП: Страница с данными идеи, при непереданном id*/
+/** Проверка ЭП: "Страница с данными идеи", при непереданном id */
 class NoIdTest extends AbstractGetTest
 {
     public function testAction(): void

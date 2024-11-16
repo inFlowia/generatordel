@@ -6,7 +6,7 @@ namespace App\Tests\Controller;
 
 use Doctrine\ORM\EntityManager;
 
-// Для тестов GET-запросов к ЭП, в которых нужен EntityManager
+/** Для тестов GET-запросов к ЭП, в которых нужен EntityManager */
 abstract class AbstractEntityManagerAwareGetTest extends AbstractGetTest
 {
     protected static EntityManager $em;

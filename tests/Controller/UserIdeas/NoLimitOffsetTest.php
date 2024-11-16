@@ -8,7 +8,10 @@ use App\Fixtures\UserIdeas\IdeaFixture;
 use App\Fixtures\UserIdeas\UserFixture;
 use App\Tests\Controller\AbstractGetTest;
 
-/** Проверка ЭП: Страница с данными идеи, с непереданными limit и offset*/
+/**
+ * Проверка ЭП: "Компонент с идеями пользователя", с непереданными limit и
+ * offset
+ */
 class NoLimitOffsetTest extends AbstractGetTest
 {
     private const string REQUESTED_USER_LOGIN = UserFixture::REQUESTED_USER_LOGIN;
@@ -39,7 +42,7 @@ class NoLimitOffsetTest extends AbstractGetTest
             self::$router->generate(
                 'user_ideas',
                 [
-                    'login'  => self::REQUESTED_USER_LOGIN,
+                    'login' => self::REQUESTED_USER_LOGIN,
                 ]
             )
         );

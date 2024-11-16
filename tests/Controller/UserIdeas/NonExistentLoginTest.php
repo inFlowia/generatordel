@@ -7,26 +7,32 @@ namespace App\Tests\Controller\UserIdeas;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Tests\Controller\AbstractEntityManagerAwareGetTest;
+use Doctrine\ORM\Exception\NotSupported;
 use Symfony\Component\HttpFoundation\Response;
 
-/** Проверка ЭП: Страница с данными идеи, если пользователя с переданным логином
- * нет */
+/**
+ * Проверка ЭП: "Компонент с идеями пользователя", если нет пользователя
+ * с таким логином нет
+ */
 class NonExistentLoginTest extends AbstractEntityManagerAwareGetTest
 {
     private const int LIMIT  = 2;
     private const int OFFSET = 1;
 
+    /**
+     * @throws NotSupported
+     */
     public function testAction(): void
     {
-        /** @var UserRepository */
+        /** @var $userRepository UserRepository */
         $userRepository = self::$em->getRepository(User::class);
 
         $nonExistentLogin = 0;
         while (
-            !empty($userRepository->findOneBy(['login' => (string) $nonExistentLogin]))
+            $userRepository->findOneBy(['login' => (string) $nonExistentLogin]) !== null
         ) {
             $nonExistentLogin++;
-        };
+        }
 
         self::$client->request(
             'GET',

@@ -8,7 +8,7 @@ use App\Fixtures\IdeaPage\IdeaFixture;
 use App\Fixtures\IdeaPage\UserFixture;
 use App\Tests\Controller\AbstractGetTest;
 
-/** Проверка ЭП: Страница с данными идеи */
+/** Проверка ЭП: "Страница с данными идеи" */
 class RegularTest extends AbstractGetTest
 {
     private const int REQUESTED_IDEA_ID = IdeaFixture::REQUESTED_IDEA_ID;
@@ -17,6 +17,9 @@ class RegularTest extends AbstractGetTest
         'author'  => UserFixture::FIRST_USER_LOGIN,
     ];
 
+    /**
+     * @throws \JsonException
+     */
     public function testAction(): void
     {
         self::$client->request(

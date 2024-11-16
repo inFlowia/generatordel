@@ -8,11 +8,11 @@ use App\Fixtures\UserIdeas\IdeaFixture;
 use App\Fixtures\UserIdeas\UserFixture;
 use App\Tests\Controller\AbstractGetTest;
 
-/** Проверка обработки limit и offset в ЭП: Страница с данными идеи */
+/** Проверка обработки limit и offset в ЭП: "Компонент с идеями пользователя" */
 class LimitOffsetTest extends AbstractGetTest
 {
     private const string REQUESTED_USER_LOGIN = UserFixture::REQUESTED_USER_LOGIN;
-    private const int LIMIT  = 2;
+    private const int LIMIT = 2;
     private const int OFFSET = 1;
 
     private const array EXPECTED = [
