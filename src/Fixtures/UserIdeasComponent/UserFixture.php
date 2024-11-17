@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Fixtures\UserIdeas;
+namespace App\Fixtures\UserIdeasComponent;
 
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;

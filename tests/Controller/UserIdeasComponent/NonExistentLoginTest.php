@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller\UserIdeas;
+namespace App\Tests\Controller\UserIdeasComponent;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
@@ -37,7 +37,7 @@ class NonExistentLoginTest extends AbstractEntityManagerAwareGetTest
         self::$client->request(
             'GET',
             self::$router->generate(
-                'user_ideas',
+                'user_ideas_component',
                 [
                     'login'  => $nonExistentLogin,
                     'limit'  => self::LIMIT,

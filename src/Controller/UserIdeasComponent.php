@@ -5,24 +5,24 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Message;
-use App\ResponseDataCreator\UserIdeasCreator;
+use App\ResponseDataCreator\UserIdeasComponentCreator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 /** ЭП: компонент с идеями пользователя */
-class UserIdeas
+class UserIdeasComponent
 {
     #[Route(
-        path   : '/user-ideas/{login}',
-        name   : 'user_ideas',
+        path   : '/component/user-ideas/{login}',
+        name   : 'user_ideas_component',
         methods: ['GET']
     )]
     public function __invoke(
-        Request          $request,
-        UserIdeasCreator $responseDataCreator,
-        ?string          $login = null,
+        Request                   $request,
+        UserIdeasComponentCreator $responseDataCreator,
+        ?string                   $login = null,
     ): JsonResponse {
         try {
             return new JsonResponse(

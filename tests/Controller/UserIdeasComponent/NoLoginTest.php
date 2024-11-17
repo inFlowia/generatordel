@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller\UserIdeas;
+namespace App\Tests\Controller\UserIdeasComponent;
 
 use App\Tests\Controller\AbstractGetTest;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +18,7 @@ class NoLoginTest extends AbstractGetTest
         self::$client->request(
             'GET',
             self::$router->generate(
-                'user_ideas',
+                'user_ideas_component',
                 [
                     'limit'  => self::LIMIT,
                     'offset' => self::OFFSET,

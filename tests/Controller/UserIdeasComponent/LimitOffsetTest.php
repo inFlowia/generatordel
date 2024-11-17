@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller\UserIdeas;
+namespace App\Tests\Controller\UserIdeasComponent;
 
-use App\Fixtures\UserIdeas\IdeaFixture;
-use App\Fixtures\UserIdeas\UserFixture;
+use App\Fixtures\UserIdeasComponent\IdeaFixture;
+use App\Fixtures\UserIdeasComponent\UserFixture;
 use App\Tests\Controller\AbstractGetTest;
 
 /** Проверка обработки limit и offset в ЭП: "Компонент с идеями пользователя" */
@@ -31,7 +31,7 @@ class LimitOffsetTest extends AbstractGetTest
         self::$client->request(
             'GET',
             self::$router->generate(
-                'user_ideas',
+                'user_ideas_component',
                 [
                     'login'  => self::REQUESTED_USER_LOGIN,
                     'limit'  => self::LIMIT,

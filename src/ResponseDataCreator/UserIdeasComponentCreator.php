@@ -9,7 +9,7 @@ use App\Message;
 use App\Repository\IdeaRepository;
 
 /** ЭП: компонент с идеями пользователя */
-readonly class UserIdeasCreator
+readonly class UserIdeasComponentCreator
 {
     private const int DEFAULT_LIMIT = 8;
 
