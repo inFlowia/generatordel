@@ -6,4 +6,4 @@ source "${CURRENT_DIR_ABSOLUTE_PATH}/lib/wait_for_db_ready.sh"
 docker-compose up -d gendel_service_php
 waitForDbReady
 
-docker exec -it gendel_container_php vendor/bin/phpunit
+docker exec -it gendel_container_php vendor/bin/phpunit "$1"
