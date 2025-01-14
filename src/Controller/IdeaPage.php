@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Helper\JsonResponseFactory;
 use App\Message;
 use App\ResponseDataCreator\IdeaPageCreator;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -19,20 +20,23 @@ class IdeaPage
         methods: ['GET']
     )]
     public function __invoke(
-        IdeaPageCreator $responseDataCreator,
-        ?int            $id = null
+        IdeaPageCreator     $responseDataCreator,
+        JsonResponseFactory $jsonResponseFactory,
+        ?int                $id = null,
     ): JsonResponse {
         try {
-            return new JsonResponse(
+            $jsonResponse = $jsonResponseFactory->create(
                 $responseDataCreator($id),
                 Response::HTTP_OK
             );
         } catch (\Throwable $exception) {
-            return new JsonResponse(
+            $jsonResponse = $jsonResponseFactory->create(
                 ['error' => Message::IDEA_NOT_FOUND],
                 Response::HTTP_NOT_FOUND
             );
             // todo: добавить логирование исключения
         }
+
+        return $jsonResponse;
     }
 }
