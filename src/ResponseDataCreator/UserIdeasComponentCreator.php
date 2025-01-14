@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\ResponseDataCreator;
 
+use App\Constants\Message;
 use App\Exception\UserIdeasException;
-use App\Message;
 use App\Repository\IdeaRepository;
 
 /** ЭП: компонент с идеями пользователя */

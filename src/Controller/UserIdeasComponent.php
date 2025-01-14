@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Constants\Message;
 use App\Helper\JsonResponseFactory;
-use App\Message;
 use App\ResponseDataCreator\UserIdeasComponentCreator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

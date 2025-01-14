@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App;
+namespace App\Constants;
 
 /** Константы с сообщениями и прочее полезное при их формировании */
 class Message
