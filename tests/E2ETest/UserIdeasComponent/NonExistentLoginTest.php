@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller\UserIdeasComponent;
+namespace App\Tests\E2ETest\UserIdeasComponent;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
-use App\Tests\Controller\AbstractEntityManagerAwareGetTest;
+use App\Tests\E2ETest\AbstractEntityManagerAwareGetTest;
 use Doctrine\ORM\Exception\NotSupported;
 use Symfony\Component\HttpFoundation\Response;
 

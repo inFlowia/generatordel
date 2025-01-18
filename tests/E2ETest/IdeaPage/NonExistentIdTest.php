@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller\IdeaPage;
+namespace App\Tests\E2ETest\IdeaPage;
 
 use App\Entity\Idea;
-use App\Tests\Controller\AbstractEntityManagerAwareGetTest;
+use App\Tests\E2ETest\AbstractEntityManagerAwareGetTest;
 use Doctrine\ORM\Exception\NotSupported;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;

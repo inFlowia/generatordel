@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller\UserIdeasComponent;
+namespace App\Tests\E2ETest\UserIdeasComponent;
 
-use App\Tests\Controller\AbstractGetTest;
+use App\Tests\E2ETest\AbstractGetTest;
 use Symfony\Component\HttpFoundation\Response;
 
 /** Проверка ЭП: "Компонент с идеями пользователя", если логин не передан */

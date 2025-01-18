@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller\IdeaPage;
+namespace App\Tests\E2ETest\IdeaPage;
 
 use App\Fixtures\IdeaPage\IdeaFixture;
 use App\Fixtures\IdeaPage\UserFixture;
-use App\Tests\Controller\AbstractGetTest;
+use App\Tests\E2ETest\AbstractGetTest;
 
 /** Проверка ЭП: "Страница с данными идеи" */
 class RegularTest extends AbstractGetTest

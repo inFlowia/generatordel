@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Controller\IdeaPage;
+namespace App\Tests\E2ETest\IdeaPage;
 
-use App\Tests\Controller\AbstractGetTest;
+use App\Tests\E2ETest\AbstractGetTest;
 use Symfony\Component\HttpFoundation\Response;
 
 /** Проверка ЭП: "Страница с данными идеи", при непереданном id */
