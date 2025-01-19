@@ -44,14 +44,17 @@ services:
       - gendel_service_db
     volumes:
       - .:/usr/src/gendel
+    ports:
+      - "8000:8000"
     command: >
       sh -c " if [ '${APP_ENV}' = 'prod' ]; then
                 cp $PHP_INI_DIR/php.ini-production $PHP_INI_DIR/php.ini;
               else
                 cp $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini;
               fi
-              # чтобы контейнер не закрывался
-              tail -f /dev/null"
+              if [ '${APP_ENV}' = 'test' ]; then
+                php -S 0.0.0.0:8000 -t public
+              fi "
 
   # если будет задана команда в этом сервисе, нужно проверить
   # bin/setup_project_for_dev.sh, так как заданная здесь команда игнорируется перед
