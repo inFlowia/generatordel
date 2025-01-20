@@ -44,6 +44,8 @@ services:
       - gendel_service_db
     volumes:
       - .:/usr/src/gendel
+      # при смене образа контейнера, проверить актуальность правого пути
+      - ./config/containers/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
     ports:
       - "8000:8000"
     command: >
