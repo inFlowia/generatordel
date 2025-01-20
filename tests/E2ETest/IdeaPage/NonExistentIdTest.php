@@ -39,19 +39,8 @@ class NonExistentIdTest extends AbstractEntityManagerAwareGetTest
 
         self::assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
 
-        $responseContent = self::$client->getResponse()->getContent();
-        $this->assertNotFalse($responseContent);
-
-        $decodedContent = \json_decode(
-            $responseContent,
-            true,
-            512,
-            JSON_THROW_ON_ERROR
-        );
-
-        $this->assertEquals(
+        $this->assertResponseBodyEquals(
             [ResponseKey::ERROR => Message::IDEA_NOT_FOUND],
-            $decodedContent
         );
     }
 }

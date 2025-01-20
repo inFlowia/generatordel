@@ -31,14 +31,6 @@ class RegularTest extends AbstractGetTest
         );
 
         self::assertResponseIsSuccessful();
-        self::assertEquals(
-            self::EXPECTED,
-            \json_decode(
-                self::$client->getResponse()->getContent(),
-                true,
-                512,
-                JSON_THROW_ON_ERROR
-            )
-        );
+        $this->assertResponseBodyEquals(self::EXPECTED);
     }
 }

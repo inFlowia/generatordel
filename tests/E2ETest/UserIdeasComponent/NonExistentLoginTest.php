@@ -23,6 +23,7 @@ class NonExistentLoginTest extends AbstractEntityManagerAwareGetTest
 
     /**
      * @throws NotSupported
+     * @throws \JsonException
      */
     public function testAction(): void
     {
@@ -49,19 +50,9 @@ class NonExistentLoginTest extends AbstractEntityManagerAwareGetTest
         );
 
         self::assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
-        $responseContent = self::$client->getResponse()->getContent();
-        $this->assertNotFalse($responseContent);
 
-        $decodedContent = \json_decode(
-            $responseContent,
-            true,
-            512,
-            JSON_THROW_ON_ERROR
-        );
-
-        $this->assertEquals(
-            [ResponseKey::ERROR => Message::USER_IDEAS_OR_USER_NOT_FOUND,],
-            $decodedContent
+        $this->assertResponseBodyEquals(
+            [ResponseKey::ERROR => Message::USER_IDEAS_OR_USER_NOT_FOUND,]
         );
     }
 }

@@ -26,6 +26,9 @@ class LimitOffsetTest extends AbstractGetTest
         ]
     ];
 
+    /**
+     * @throws \JsonException
+     */
     public function testAction(): void
     {
         self::$client->request(
@@ -41,14 +44,6 @@ class LimitOffsetTest extends AbstractGetTest
         );
 
         self::assertResponseIsSuccessful();
-        self::assertEquals(
-            self::EXPECTED,
-            \json_decode(
-                self::$client->getResponse()->getContent(),
-                true,
-                512,
-                JSON_THROW_ON_ERROR
-            )
-        );
+        $this->assertResponseBodyEquals(self::EXPECTED);
     }
 }

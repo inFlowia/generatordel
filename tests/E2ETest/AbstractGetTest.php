@@ -24,4 +24,36 @@ abstract class AbstractGetTest extends WebTestCase
         self::$container = static::$kernel->getContainer();
         self::$router = self::$container->get('router');
     }
+
+    /**
+     * @throws \JsonException
+     */
+    protected function assertResponseBodyEquals(
+        array $expectedResponseBody
+    ): void {
+        $responseBody = $this->getDecodedResponseBody();
+        $this->assertEquals($expectedResponseBody, $responseBody);
+    }
+
+    /**
+     * @throws \JsonException
+     */
+    private function getDecodedResponseBody(): mixed
+    {
+        $responseBody = self::$client->getResponse()->getContent();
+        if ($responseBody === false) {
+            throw new \UnexpectedValueException(
+                'Вместо тела ответа получено false'
+            );
+        }
+
+        return \json_decode(
+            $responseBody,
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        );
+    }
+
+
 }
