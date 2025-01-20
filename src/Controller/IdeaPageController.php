@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 /** ЭП: Страница с данными идеи */
-class IdeaPage
+class IdeaPageController
 {
     #[Route(
         path   : '/idea/{id}',

@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 /** ЭП: компонент с идеями пользователя */
-class UserIdeasComponent
+class UserIdeasComponentController
 {
     #[Route(
         path   : '/component/user-ideas/{login}',
