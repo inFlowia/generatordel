@@ -1,5 +1,6 @@
 # После правок этого файла не забудь выполнить:
-# docker-compose build
+# docker compose down
+# docker compose up -d --build
 
 FROM php:8.3.12-zts-bullseye
 
@@ -10,7 +11,7 @@ RUN docker-php-ext-install pdo_mysql
 # совместимость с версией php (со слов хозяина образа php).
 # Совместимость версий xdebug: https://xdebug.org/docs/compat
 #
-# Есои не выполняется docker-php-ext-enable xdebug, возможно ошибка в
+# Если не выполняется docker-php-ext-enable xdebug, возможно ошибка в
 # config/containers/php/xdebug.ini
 RUN pecl install xdebug-3.4.1 \
     && docker-php-ext-enable xdebug
