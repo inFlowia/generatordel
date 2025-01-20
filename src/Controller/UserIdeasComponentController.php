@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Constants\Message;
+use App\Constants\ResponseKey;
 use App\Helper\JsonResponseFactory;
 use App\ResponseDataCreator\UserIdeasComponentCreator;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,7 +25,7 @@ class UserIdeasComponentController
         Request                   $request,
         UserIdeasComponentCreator $responseDataCreator,
         JsonResponseFactory       $jsonResponseFactory,
-        ?string                   $login = null,
+        string                    $login,
     ): JsonResponse {
         try {
             $jsonResponse = $jsonResponseFactory->create(
@@ -37,7 +38,7 @@ class UserIdeasComponentController
             );
         } catch (\Throwable $exception) {
             $jsonResponse = $jsonResponseFactory->create(
-                ['error' => Message::USER_IDEAS_GETTING_ERROR],
+                [ResponseKey::ERROR => Message::USER_IDEAS_GETTING_ERROR],
                 Response::HTTP_NOT_FOUND
             );
             // todo: добавить логирование исключения
