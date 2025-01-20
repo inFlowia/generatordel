@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\ResponseDataCreator;
 
 use App\Constants\Message;
-use App\Exception\UserIdeasException;
+use App\Exception\NotFoundException;
 use App\Repository\IdeaRepository;
 
 /** ЭП: компонент с идеями пользователя */
@@ -15,9 +15,6 @@ readonly class UserIdeasComponentCreator
 
     public function __construct(private IdeaRepository $repository) {}
 
-    /**
-     * @throws UserIdeasException
-     */
     public function __invoke(
         string $login,
         int    $limit,
@@ -30,7 +27,7 @@ readonly class UserIdeasComponentCreator
         $ideas = $this->repository->findByUserLogin($login, $limit, $offset);
 
         if (\count($ideas) < 1) {
-            throw new UserIdeasException(Message::USER_IDEAS_OR_USER_NOT_FOUND);
+            throw new NotFoundException(Message::USER_IDEAS_OR_USER_NOT_FOUND);
         }
 
         return $ideas;

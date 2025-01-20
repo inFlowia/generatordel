@@ -39,7 +39,7 @@ class IdeaPageController
             // todo: добавить логирование исключения
         } catch (\Throwable $exception) {
             $jsonResponse = $jsonResponseFactory->create(
-                [ResponseKey::ERROR => Message::IDEA_NOT_FOUND],
+                [ResponseKey::ERROR => Message::ERROR_GENERAL_MESSAGE],
                 Response::HTTP_INTERNAL_SERVER_ERROR
             );
             // todo: добавить логирование исключения
