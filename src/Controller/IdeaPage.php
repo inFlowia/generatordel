@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Constants\Message;
+use App\Constants\ResponseKey;
+use App\Exception\NotFoundException;
 use App\Helper\JsonResponseFactory;
 use App\ResponseDataCreator\IdeaPageCreator;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -29,10 +31,16 @@ class IdeaPage
                 $responseDataCreator($id),
                 Response::HTTP_OK
             );
+        } catch (NotFoundException $exception) {
+            $jsonResponse = $jsonResponseFactory->create(
+                [ResponseKey::ERROR => Message::IDEA_NOT_FOUND],
+                Response::HTTP_NOT_FOUND
+            );
+            // todo: добавить логирование исключения
         } catch (\Throwable $exception) {
             $jsonResponse = $jsonResponseFactory->create(
-                ['error' => Message::IDEA_NOT_FOUND],
-                Response::HTTP_NOT_FOUND
+                [ResponseKey::ERROR => Message::IDEA_NOT_FOUND],
+                Response::HTTP_INTERNAL_SERVER_ERROR
             );
             // todo: добавить логирование исключения
         }

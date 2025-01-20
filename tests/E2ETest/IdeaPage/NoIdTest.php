@@ -14,6 +14,6 @@ class NoIdTest extends AbstractGetTest
     {
         self::$client->request('GET', self::$router->generate('idea_page'));
 
-        self::assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
+        self::assertResponseStatusCodeSame(Response::HTTP_INTERNAL_SERVER_ERROR);
     }
 }

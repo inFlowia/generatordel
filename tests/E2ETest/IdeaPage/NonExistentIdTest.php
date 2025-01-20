@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\E2ETest\IdeaPage;
 
+use App\Constants\Message;
+use App\Constants\ResponseKey;
 use App\Entity\Idea;
 use App\Tests\E2ETest\AbstractEntityManagerAwareGetTest;
 use Doctrine\ORM\Exception\NotSupported;
@@ -18,6 +20,7 @@ class NonExistentIdTest extends AbstractEntityManagerAwareGetTest
      * @throws NonUniqueResultException
      * @throws NotSupported
      * @throws NoResultException
+     * @throws \JsonException
      */
     public function testAction(): void
     {
@@ -35,5 +38,20 @@ class NonExistentIdTest extends AbstractEntityManagerAwareGetTest
         );
 
         self::assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
+
+        $responseContent = self::$client->getResponse()->getContent();
+        $this->assertNotFalse($responseContent);
+
+        $decodedContent = \json_decode(
+            $responseContent,
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        );
+
+        $this->assertEquals(
+            [ResponseKey::ERROR => Message::IDEA_NOT_FOUND],
+            $decodedContent
+        );
     }
 }
