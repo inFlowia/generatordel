@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\E2ETest\UserIdeasComponent;
 
+use App\Constants\Message;
+use App\Constants\ResponseKey;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use App\Tests\E2ETest\AbstractEntityManagerAwareGetTest;
@@ -47,5 +49,19 @@ class NonExistentLoginTest extends AbstractEntityManagerAwareGetTest
         );
 
         self::assertResponseStatusCodeSame(Response::HTTP_NOT_FOUND);
+        $responseContent = self::$client->getResponse()->getContent();
+        $this->assertNotFalse($responseContent);
+
+        $decodedContent = \json_decode(
+            $responseContent,
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        );
+
+        $this->assertEquals(
+            [ResponseKey::ERROR => Message::USER_IDEAS_OR_USER_NOT_FOUND,],
+            $decodedContent
+        );
     }
 }
