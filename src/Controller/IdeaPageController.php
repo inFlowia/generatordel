@@ -24,7 +24,7 @@ class IdeaPageController
     public function __invoke(
         IdeaPageCreator     $responseDataCreator,
         JsonResponseFactory $jsonResponseFactory,
-        ?int                $id = null,
+        int                 $id,
     ): JsonResponse {
         try {
             $jsonResponse = $jsonResponseFactory->create(
